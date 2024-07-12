@@ -1,10 +1,11 @@
 import userModel from "../models/userModel.js";
 import asyncHandler from "../middlewares/asyncHandler.js";
-import createToken from "../utils/createToken.js"
+import createToken from "../utils/createToken.js";
+import bcrypt from 'bcryptjs';
 
 
 
-const signup=asyncHandler(async(req,res,next)=>{
+const signup=asyncHandler(async(req,res)=>{
    const {username,email,password}=req.body;
 
    if(!username || !email || !password){
@@ -43,5 +44,41 @@ const signup=asyncHandler(async(req,res,next)=>{
 
 })
 
+const signin=asyncHandler(async(req,res)=>{
+   const {email,password}=req.body;
 
-export {signup};
+   if(!email || !password){
+    throw new Error("please enter email and password")
+   }
+
+   const user=await userModel.findOne({email});
+
+   if(user){
+       const validPass=await bcrypt.compareSync(password,user.password);
+
+       if(validPass){
+        // create token
+        createToken(res,user._id);
+
+        // send response
+        res.status(200).json({
+            _id:user._id,
+            username:user.username,
+            email:user.email,
+            isAdmin:user.isAdmin
+        })
+        return;
+
+       }else{
+        res.status(500).send("Email or password is invalid")
+       }
+   
+   }else{
+    res.status(500).send("Email or password is invalid")
+   }
+
+
+  
+})
+
+export {signup,signin};
