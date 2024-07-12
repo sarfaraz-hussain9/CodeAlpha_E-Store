@@ -4,7 +4,7 @@ import createToken from "../utils/createToken.js";
 import bcrypt from 'bcryptjs';
 
 
-
+// signUp
 const signup=asyncHandler(async(req,res)=>{
    const {username,email,password}=req.body;
 
@@ -44,6 +44,8 @@ const signup=asyncHandler(async(req,res)=>{
 
 })
 
+
+// signIn
 const signin=asyncHandler(async(req,res)=>{
    const {email,password}=req.body;
 
@@ -77,8 +79,21 @@ const signin=asyncHandler(async(req,res)=>{
     res.status(500).send("Email or password is invalid")
    }
 
-
-  
 })
 
-export {signup,signin};
+
+const logout=asyncHandler(async(req,res)=>{
+    res.cookie('jwt','',{
+        httpOnly:true,
+        expires: new Date(0),
+    })
+    res.status(200).json({message:"Logged out successfully"})
+})
+
+
+const getAllUser=asyncHandler(async(req,res)=>{
+    const user=await userModel.find({});
+
+    res.json(user);
+})
+export {signup,signin,logout,getAllUser};
