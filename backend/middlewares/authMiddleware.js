@@ -8,7 +8,7 @@ const authenticate= asyncHandler(async(req,res,next)=>{
 
     // read jwt from 'jwt' cookie
     let token;
-    token.req.cookies.jwt;
+    token=req.cookies.jwt;
 
     if(token){
         try {
@@ -18,11 +18,11 @@ const authenticate= asyncHandler(async(req,res,next)=>{
             next();
 
         } catch (error) {
-            res.statusa(401)
+            res.status(401)
             throw new Error("Not authorized , token failed")
         }
     }else{
-        res.statusa(401)
+        res.status(401)
         throw new Error("Not authorized , no token")
     }
 })
