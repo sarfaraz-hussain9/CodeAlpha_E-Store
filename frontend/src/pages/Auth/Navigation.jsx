@@ -18,7 +18,7 @@ const Navigation = () => {
             <h1>eStore</h1>
        </div>
        <div className="  ">
-        <ul className={`flex flex-col lg:flex-row absolute top-12 ${isOpen ? `left-0` : `left-[-900px]`} lg:relative pl-6 lg:pl-0 bg-gray-200 w-full lg:top-auto lg:left-auto h-1/2 lg:h-auto py-4 lg:py-0 gap-2 lg:gap-10 lg:pr-12 transition-all `}>
+        <ul className={`flex flex-col lg:flex-row absolute top-12 ${isOpen ? `left-0` : `left-[-900px]`} lg:relative pl-6 lg:pl-0 bg-gray-200 w-full lg:top-auto lg:left-auto h-1/2 lg:h-auto py-4 lg:py-0 gap-2 lg:gap-10 lg:pr-12 transition-all items-center `}>
             <li onClick={()=>{setIsOpen(!isOpen)}} className="">
                 <Link to="/">HOME</Link>
             </li>
@@ -30,6 +30,18 @@ const Navigation = () => {
             </li>
             <li onClick={()=>{setIsOpen(!isOpen)}} className="">
                 <Link to="/signin">SIGNIN</Link>
+            </li>
+            <li  onClick={()=>{setIsOpen(!isOpen)}} className="lg:hidden">
+                <Link to="/cart">CART-{0}</Link>
+            </li>
+            <li onClick={()=>{setIsOpen(!isOpen)}} className="hidden lg:block relative">
+                <Link to="/cart">
+                <p className="absolute text-xs bg-red-600 text-center rounded-full right-0 top-0 text-white w-4">40</p>
+                <div className="text-3xl">
+                    <FaShoppingCart/>
+                </div>
+                </Link>
+
             </li>
         </ul>
        </div>
