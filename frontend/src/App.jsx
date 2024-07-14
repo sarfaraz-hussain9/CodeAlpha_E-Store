@@ -1,21 +1,17 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar.jsx";
-import Home from "./pages/user/Home.jsx";
+import { Outlet } from "react-router-dom"
+import Navigation from "./pages/Auth/Navigation"
+import {ToastContainer} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+
 const App = () => {
   return (
-
-    <BrowserRouter>
-    <Navbar/>
-    
-      <Routes>
-          
-          <Route index element={<Home/>} />
-          <Route path="/signup" element={<Home/>} />
-          
-        
-      </Routes>
-    </BrowserRouter>
-
+   <>
+    <ToastContainer/>
+    <Navigation/>
+    <div className="py-3">
+      <Outlet/>
+    </div>
+   </>
   )
 }
 
