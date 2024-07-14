@@ -14,17 +14,17 @@ const Navbar = () => {
 
   return (
     <>
-      <div className=" overflow-hidden z-10">
-        <nav className="w-screen h-14 bg-black text-white flex items-center justify-between px-5">
-          <div className="  text-3xl flex items-center gap-1 text-green-500">
+      <div className=" z-10 bg-gray-100">
+        <nav className="w-screen h-14 flex items-center justify-between px-5">
+          <div className="  text-3xl flex items-center gap-1 text-gray-500">
             <FaShop />
             <h1 className="">
-              <span className="text-white">e</span>Store
+              <span className="">e</span>Store
             </h1>
           </div>
           <div className="flex items-center  gap-3">
             {/* webnav */}
-            <div className="hidden lg:block">
+            <div className="hidden lg:block font-medium">
               <ul className="flex text-xl gap-6">
                 <li>
                   <Link to="/">HOME</Link>
@@ -33,10 +33,10 @@ const Navbar = () => {
                   <Link to="/product">PRODUCT</Link>
                 </li>
                 <button className="bg-blue-500 rounded-lg px-5">
-                  <Link to="/product">SIGNIN</Link>
+                  <Link to="/signin">SIGNIN</Link>
                 </button>
                 <button className="bg-blue-500 rounded-lg px-5">
-                  <Link to="/product">SIGNUP</Link>
+                  <Link to="/signup">SIGNUP</Link>
                 </button>
               </ul>
             </div>
@@ -44,9 +44,9 @@ const Navbar = () => {
             <div
               className={`z-[-1] absolute ${
                 isOpen ? `top-14` : `top-[-700px]`
-              } left-0 w-[100vw] h-[88vh] bg-black flex justify-center items-center lg:hidden transition-all ease-in-out`}
+              } left-0 w-[100vw] h-[88vh] bg-gray-100 flex justify-center items-center lg:hidden transition-all ease-in-out`}
             >
-              <ul className="flex text-xl flex-col gap-3 text-center">
+              <ul className="flex text-xl flex-col gap-3 text-center font-medium">
                 <li>
                   <Link to="/">HOME</Link>
                 </li>
@@ -54,10 +54,10 @@ const Navbar = () => {
                   <Link to="/product">PRODUCT</Link>
                 </li>
                 <button className="bg-blue-500 rounded-lg px-5">
-                  <Link to="/product">SIGNIN</Link>
+                  <Link to="/signin">SIGNIN</Link>
                 </button>
                 <button className="bg-blue-500 rounded-lg px-5">
-                  <Link to="/product">SIGNUP</Link>
+                  <Link to="/signup">SIGNUP</Link>
                 </button>
               </ul>
             </div>
@@ -65,11 +65,11 @@ const Navbar = () => {
             <div className="text-3xl flex items-center gap-3">
               <ul>
                 {/* cart */}
-                <li className="relative">
+                <li className="relative w-11 h-8">
                   <Link className="text-3xl" to="/cart">
                     <FaShoppingCart />
                   </Link>
-                  <h3 className=" bg-red-600 w-5 h-5 rounded-full font-bold absolute top-[-3px] right-[-8px] text-center text-xs">
+                  <h3 className=" bg-red-600 w-5 h-5 rounded-full font-bold absolute top-0 right-0 text-center text-xs">
                     0
                   </h3>
                 </li>
@@ -82,6 +82,7 @@ const Navbar = () => {
           </div>
         </nav>
       </div>
+      
     </>
   );
 };
