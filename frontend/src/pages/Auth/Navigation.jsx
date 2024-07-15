@@ -7,6 +7,7 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import { useSelector } from "react-redux";
 
 
+
 const Navigation = () => {
     const [isOpen,setIsOpen]=useState(false);
     const {userInfo}=useSelector(state=>state.auth)
@@ -36,6 +37,8 @@ const Navigation = () => {
             <li  onClick={()=>{setIsOpen(!isOpen)}} className={`${userInfo ? `block` : `hidden`} lg:hidden`} >
                 <Link to="/cart">CART-{0}</Link>
             </li>
+           
+
             <li onClick={()=>{setIsOpen(!isOpen)}} 
              className={`${userInfo ? `lg:block` : `lg:hidden`} hidden  relative`} >
                 <Link to="/cart">
@@ -51,6 +54,9 @@ const Navigation = () => {
       <div onClick={()=>{setIsOpen(!isOpen)}} className="lg:hidden absolute right-8 text-3xl top-2">
        {isOpen ? <FaX/> :<IoMenuSharp/>}
       </div>
+
+       
+
        </div>
 
        </nav>
