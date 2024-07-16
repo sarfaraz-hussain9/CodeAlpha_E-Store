@@ -14,7 +14,7 @@ const Navigation = () => {
     <>
       <div
         style={{ zIndex: 999 }}
-        className=" w-screen  lg:px-6 py-2 px-1 bg-gray-200"
+        className=" w-screen  lg:px-6 py-2 px-1 bg-gray-200 fixed top-0 left-0 shadow-md"
       >
         <div className=" lg:flex lg:items-center w-full lg:justify-between text-xl font-semibold">
           <div className=" flex items-center ">
@@ -102,13 +102,13 @@ const Navigation = () => {
             onClick={() => {
               setIsOpen(!isOpen);
             }}
-            className="lg:hidden absolute right-8 text-3xl top-2 cursor-pointer"
+            className="lg:hidden absolute right-4 text-3xl top-2 cursor-pointer"
           >
             {isOpen ? <FaX /> : <IoMenuSharp />}
           </div>
 
           {userInfo ? (
-            <div className=" lg:hidden absolute top-2 right-[4.1rem]">
+            <div className=" lg:hidden absolute top-2 right-12">
               <Link to="/profile">
                 <img className="w-7 rounded-full" src={profile} />
               </Link>

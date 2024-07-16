@@ -10,7 +10,8 @@
     font-family: "Roboto", sans-serif;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    overflow: hidden;
+    overflow-x: hidden;
+    scrollbar-width: none;
 }
 
 body{

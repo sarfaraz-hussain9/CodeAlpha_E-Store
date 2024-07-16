@@ -15,16 +15,18 @@ import Product from './pages/user/Product.jsx'
 import Profile from './pages/user/Profile.jsx'
 import UpdateProfile from './pages/user/UpdateProfile.jsx'
 import PrivateRoute from './components/PrivateRoute.jsx'
+import Home from './pages/user/Home.jsx'
 
 const router=createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App/>}>
+      <Route path='/' element={<Home/>} />
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/signin' element={<Signin/>}/>
+      <Route path='/product' element={<Product/>}/>
 
     <Route path='' element={<PrivateRoute/>}>
       <Route path='/cart' element={<Cart/>}/>
-      <Route path='/product' element={<Product/>}/>
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/updateprofile' element={<UpdateProfile/>}/>
       </Route>
