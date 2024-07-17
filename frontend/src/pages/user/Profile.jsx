@@ -40,8 +40,10 @@ const Profile = () => {
                  
                  </div>
                  <div>
-                 
                  <h1 className="text-xl text-blue-400">{userInfo.email}</h1>
+                 </div>
+                 <div>
+                 <h1 className="text-xl text-green-600">{`${userInfo.isAdmin ? "ADMIN":""}`}</h1>
                  </div>
                 </div>
              </div>

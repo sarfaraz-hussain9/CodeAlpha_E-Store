@@ -1,10 +1,28 @@
 import bnrM from "../../assets/images/bnrM.jpg"
 import bnr from "../../assets/images/bnr.jpg"
 
-import Card from "../../components/Card"
+import { useGetNewProductsQuery } from "../../redux/api/productApiSlice"
+import ProductCard from "../Admin/ProductCard"
+import { useEffect } from "react"
+
 
 
 const Home = () => {
+  const {data:newProduct,refetch,error,isLoading}=useGetNewProductsQuery()
+  const {data:topProduct}=useGetNewProductsQuery()
+
+ 
+
+  useEffect(()=>{
+    refetch()
+  },[refetch])
+
+  if(isLoading){
+    return <div>Loading...</div>
+  }
+  if(error){
+    return <div>{error.message}</div>
+  }
   return (
     <>
       <div className=" w-screen px-2 lg:px-10">
@@ -18,18 +36,29 @@ const Home = () => {
         </div>
 
         <div className="product flex flex-col items-center py-10 gap-3 font-semibold text-gray-600">
-          <h1 className="text-2xl uppercase">New Products</h1>
-          <div className="grid  gap-3 md:grid-cols-2  xl:grid-cols-4">
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            
+          <h1 className="text-2xl uppercase">Top Products</h1>
+         {topProduct ? 
+         topProduct.map((product)=>(
+          <div key={product._id}>
+            <ProductCard p={product}/>
           </div>
+         ))
+         :(
+          <div>no product...</div>
+         )}
+        </div>
+        
+        <div className="product flex flex-col items-center py-10 gap-3 font-semibold text-gray-600">
+          <h1 className="text-2xl uppercase">New Products</h1>
+         {newProduct ? 
+         newProduct.map((product)=>(
+          <div key={product._id}>
+            <ProductCard p={product}/>
+          </div>
+         ))
+         :(
+          <div>no product...</div>
+         )}
         </div>
         </div>
       </div>

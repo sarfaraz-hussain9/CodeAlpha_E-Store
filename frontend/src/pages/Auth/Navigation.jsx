@@ -6,15 +6,18 @@ import { FaShoppingCart } from "react-icons/fa";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { useSelector } from "react-redux";
 import profile from "../../assets/images/profile.avif";
+import { RiAdminFill } from "react-icons/ri";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { userInfo } = useSelector((state) => state.auth);
+  const {cartItems} =useSelector((state)=>state.cart)
+ 
   return (
     <>
       <div
         style={{ zIndex: 999 }}
-        className=" w-screen  lg:px-6 py-2 px-1 bg-gray-200 fixed top-0 left-0 shadow-md"
+        className=" w-screen  lg:px-6 py-2 px-1 bg-gray-200  shadow-md "
       >
         <div className=" lg:flex lg:items-center w-full lg:justify-between text-xl font-semibold">
           <div className=" flex items-center ">
@@ -80,7 +83,13 @@ const Navigation = () => {
               >
                 <Link to="/cart">
                   <p className="absolute text-xs bg-red-600 text-center rounded-full right-0 top-0 text-white w-4">
-                    40
+                  {cartItems.length > 0 && (
+              <span>
+                <span className="px-1 py-0 text-sm text-white bg-pink-500 rounded-full">
+                  {cartItems.reduce((a, c) => a + c.qty, 0)}
+                </span>
+              </span>
+            ) ||0 }
                   </p>
                   <div className="text-3xl">
                     <FaShoppingCart />
@@ -117,6 +126,26 @@ const Navigation = () => {
 
         </div>
       </div>
+      
+     
+     <div className=" w-40 h-40  text-white  fixed right-5 bottom-5 ">
+           <div className="w-full h-full relative group flex flex-col items-center justify-center">
+           <Link to="/admin/userlists">
+           <h1 className="text-black font-semibold opacity-0 group-hover:opacity-100 transition-opacity">USERLISTS</h1>
+           </Link>
+           <Link to="/admin/productlists">
+           <h1 className="text-black font-semibold opacity-0 group-hover:opacity-100 transition-opacity">PRODUCTS</h1>
+           </Link>
+           <Link to="/admin/createProduct">
+           <h1 className="text-black font-semibold opacity-0 group-hover:opacity-100 transition-opacity">CREATE PRODUCT</h1>
+           </Link>
+          
+          <RiAdminFill className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-white hover:text-black"/>
+          
+           </div>
+      </div>
+
+
     </>
   );
 };

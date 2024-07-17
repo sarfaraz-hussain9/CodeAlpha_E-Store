@@ -16,6 +16,11 @@ import Profile from './pages/user/Profile.jsx'
 import UpdateProfile from './pages/user/UpdateProfile.jsx'
 import PrivateRoute from './components/PrivateRoute.jsx'
 import Home from './pages/user/Home.jsx'
+import AdminRoute from './pages/Admin/AdminRoute.jsx'
+import UserList from './pages/Admin/UserList.jsx'
+import CreateProduct from './pages/Admin/CreateProduct.jsx'
+import Productlist from './pages/Admin/Productlist.jsx'
+
 
 const router=createBrowserRouter(
   createRoutesFromElements(
@@ -25,11 +30,19 @@ const router=createBrowserRouter(
       <Route path='/signin' element={<Signin/>}/>
       <Route path='/product' element={<Product/>}/>
 
-    <Route path='' element={<PrivateRoute/>}>
-      <Route path='/cart' element={<Cart/>}/>
-      <Route path='/profile' element={<Profile/>}/>
-      <Route path='/updateprofile' element={<UpdateProfile/>}/>
+      <Route path='' element={<PrivateRoute/>}>
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/updateprofile' element={<UpdateProfile/>}/>
       </Route>
+
+      
+      <Route path='/admin' element={<AdminRoute/>}>
+        <Route path='userlists' element={<UserList/>}/>
+        <Route path='createProduct' element={<CreateProduct/>}/>
+        <Route path='productlists' element={<Productlist/>}/>
+      </Route>
+
     </Route>
   )
 )
