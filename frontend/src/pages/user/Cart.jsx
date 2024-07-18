@@ -1,10 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaTrash } from "react-icons/fa";
 import { addToCart, removeFromCart } from "../../redux/api/cart";
 
 const Cart = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
@@ -21,11 +20,11 @@ const Cart = () => {
 
   return (
     <>
-     <div className="w-screen min-h-[81vh]">
+     <div className="w-screen lg:min-h-[81vh] min-h-[83vh]">
      <div className="container flex justify-around items-start flex-wrap mx-auto mt-8">
         {cartItems.length === 0 ? (
           <div>
-            Your cart is empty <Link to="/shop">Go To Shop</Link>
+            Your cart is empty <Link >Go To Shop</Link>
           </div>
         ) : (
           <>
@@ -47,8 +46,8 @@ const Cart = () => {
                       {item.name}
                     </Link>
 
-                    <div className="mt-2 text-white">{item.brand}</div>
-                    <div className="mt-2 text-white font-bold">
+                    <div className="mt-2 text-pink-500">{item.brand}</div>
+                    <div className="mt-2 text-pink-500 font-bold">
                     ₹ {item.price}
                     </div>
                   </div>
@@ -94,7 +93,7 @@ const Cart = () => {
                   </div>
 
                   <button
-                    className="bg-pink-500 mt-4 py-2 px-4 rounded-full text-lg w-full"
+                    className="bg-pink-500 mt-4 py-2 px-4 rounded-full text-lg w-60"
                     disabled={cartItems.length === 0}
                     
                   >

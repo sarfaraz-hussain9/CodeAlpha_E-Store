@@ -67,7 +67,7 @@ const ProductList = () => {
     <div className="container xl:mx-[9rem] sm:mx-[0]">
       <div className="flex flex-col md:flex-row">
         <div className="md:w-3/4 p-3">
-          <div className="h-12">Create Product</div>
+          <div className="h-12 text-center text-2xl font-semibold text-gray-500 underline">Create Product</div>
 
           {imageUrl && (
             <div className="text-center">

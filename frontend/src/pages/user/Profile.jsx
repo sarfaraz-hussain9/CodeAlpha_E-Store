@@ -6,6 +6,8 @@ import profile from "../../assets/images/profile.avif"
 
 import { signOut } from "../../redux/api/auth";
 import { useLogoutMutation } from "../../redux/api/usersApiSlice";
+import { clearCartItems } from "../../redux/api/cart";
+
 
 const Profile = () => {
   const dispatch =useDispatch()
@@ -17,6 +19,7 @@ const Profile = () => {
     try {
       await logout().unwrap()
       dispatch(signOut())
+      dispatch(clearCartItems())
       toast.success("user logOut successfully")
       navigate("/signin")
     } catch (error) {

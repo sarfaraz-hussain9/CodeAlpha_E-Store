@@ -6,7 +6,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { useSelector } from "react-redux";
 import profile from "../../assets/images/profile.avif";
-import { RiAdminFill } from "react-icons/ri";
+import AdminMenu from "../Admin/AdminMenu"
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,7 @@ const Navigation = () => {
     <>
       <div
         style={{ zIndex: 999 }}
-        className=" w-screen  lg:px-6 py-2 px-1 bg-gray-200  shadow-md "
+        className=" w-screen  lg:px-6 py-2 px-1 bg-gray-200  shadow-md fixed top-0 left-0 "
       >
         <div className=" lg:flex lg:items-center w-full lg:justify-between text-xl font-semibold">
           <div className=" flex items-center ">
@@ -29,9 +29,9 @@ const Navigation = () => {
           <div className="   ">
             <ul
               style={{ zIndex: 999 }}
-              className={`flex flex-col lg:flex-row absolute top-12 ${
-                isOpen ? `left-0` : `left-[-10000px]`
-              } lg:relative  bg-gray-200 lg:top-auto lg:left-auto h-1/2 lg:h-auto w-full py-4 lg:py-0 gap-2 lg:gap-10 lg:pr-12 transition-all items-center shadow-2xl `}
+              className={`flex flex-col lg:flex-row ${
+                isOpen ? `block mt-12` : `left-[-10000px] absolute`
+              } lg:relative  bg-gray-200 lg:top-auto lg:left-auto h-1/2 lg:h-auto lg:mt-0 w-full py-4 lg:py-0 gap-2 lg:gap-10 lg:pr-12 transition-all items-center shadow-2xl `}
             >
               <li
                 onClick={() => {
@@ -71,7 +71,7 @@ const Navigation = () => {
                 }}
                 className={`${userInfo ? `block` : `hidden`} lg:hidden`}
               >
-                <Link to="/cart">CART-{0}</Link>
+                <Link to="/cart">CART- {cartItems.reduce((a, c) => a + c.qty, 0) || 0}</Link>
               </li>
               <li
                 onClick={() => {
@@ -128,21 +128,8 @@ const Navigation = () => {
       </div>
       
      
-     <div className=" w-40 h-40  text-white  fixed right-5 bottom-5 ">
-           <div className="w-full h-full relative group flex flex-col items-center justify-center">
-           <Link to="/admin/userlists">
-           <h1 className="text-black font-semibold opacity-0 group-hover:opacity-100 transition-opacity">USERLISTS</h1>
-           </Link>
-           <Link to="/admin/productlists">
-           <h1 className="text-black font-semibold opacity-0 group-hover:opacity-100 transition-opacity">PRODUCTS</h1>
-           </Link>
-           <Link to="/admin/createProduct">
-           <h1 className="text-black font-semibold opacity-0 group-hover:opacity-100 transition-opacity">CREATE PRODUCT</h1>
-           </Link>
-          
-          <RiAdminFill className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-white hover:text-black"/>
-          
-           </div>
+     <div style={{ zIndex: 999 }} className=" w-40 h-40  text-white  fixed right-5 bottom-5 cursor-pointer hidden lg:block">
+           <AdminMenu/>
       </div>
 
 

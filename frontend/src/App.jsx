@@ -8,10 +8,8 @@ const App = () => {
   return (
    <>
     <ToastContainer/>
-    <div style={{zIndex:999}} className="w-screen h-[90vh] fixed top-0 left-0 lg:h-auto">
     <Navigation />
-    </div>
-    <div style={{zIndex:-1}} className="py-3 mt-12">
+    <div className="py-3 mt-12">
       <Outlet/>
     </div>
     <Footer/>

@@ -37,6 +37,8 @@ const Home = () => {
 
         <div className="product flex flex-col items-center py-10 gap-3 font-semibold text-gray-600">
           <h1 className="text-2xl uppercase">Top Products</h1>
+          <div  className='w-screen min-h-[81vh] flex flex-wrap gap-6 px-10 justify-center items-center'>
+
          {topProduct ? 
          topProduct.map((product)=>(
           <div key={product._id}>
@@ -46,10 +48,13 @@ const Home = () => {
          :(
           <div>no product...</div>
          )}
+          </div>
         </div>
         
         <div className="product flex flex-col items-center py-10 gap-3 font-semibold text-gray-600">
           <h1 className="text-2xl uppercase">New Products</h1>
+          <div  className='w-screen min-h-[81vh] flex flex-wrap gap-6 px-10 justify-center items-center'>
+
          {newProduct ? 
          newProduct.map((product)=>(
           <div key={product._id}>
@@ -59,6 +64,7 @@ const Home = () => {
          :(
           <div>no product...</div>
          )}
+          </div>
         </div>
         </div>
       </div>
