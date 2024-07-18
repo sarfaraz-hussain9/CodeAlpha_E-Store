@@ -21,6 +21,7 @@ connectDB();
 
 const app=express();
 
+const __dirname = path.resolve();
 
 app.use(cors());
 app.use(express.json())
@@ -36,7 +37,6 @@ app.use("/api/v1/upload",uploadRoute)
 
 app.use('/uploads',express.static(path.join(__dirname,"./uploads")))
 
-const __dirname = path.resolve();
 app.use(express.static(__dirname));
 
 app.listen(port,()=>{
