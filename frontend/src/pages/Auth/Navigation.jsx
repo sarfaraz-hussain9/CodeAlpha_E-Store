@@ -128,9 +128,13 @@ const Navigation = () => {
       </div>
       
      
-     <div style={{ zIndex: 999 }} className=" w-40 h-40  text-white  fixed right-5 bottom-5 cursor-pointer hidden lg:block">
+     {userInfo && userInfo.isAdmin ? (
+      <div style={{ zIndex: 999 }} className=" w-40 h-40  text-white  fixed right-5 bottom-5 cursor-pointer hidden lg:block">
            <AdminMenu/>
       </div>
+     ):(<></>)
+
+     }
 
 
     </>
