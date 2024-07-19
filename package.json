@@ -5,11 +5,10 @@
   "main": "backend/index.js",
   "type": "module",
   "scripts": {
-   "start": "node backend/index.js", // Start the backend server
-    "dev": "nodemon backend/index.js", // For development, using nodemon
-    "heroku-postbuild": "cd frontend && npm install && npm run build" // Build frontend before deployment
+   "start": "node backend/index.js",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
-  "author": "",
+  "author": "Sarfaraz Hussain",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
