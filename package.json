@@ -5,8 +5,11 @@
   "main": "backend/index.js",
   "type": "module",
   "scripts": {
-   "start": "node backend/index.js",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "server": "nodemon backend/server.js",
+    "client": "npm run index.js --prefix frontend"
   },
   "author": "Sarfaraz Hussain",
   "license": "ISC",
