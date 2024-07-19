@@ -6,10 +6,10 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node backend/server.js",
+    "start": "node backend/index.js",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-    "server": "nodemon backend/server.js",
-    "client": "npm run index.js --prefix frontend"
+    "server": "nodemon backend/index.js",
+    "client": "npm run main.jsx --prefix frontend"
   },
   "author": "Sarfaraz Hussain",
   "license": "ISC",
