@@ -15,7 +15,13 @@ const port = process.env.PORT || 8000;
 
 connectDB();
 
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://mern-estore-bbmh.onrender.com/',
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
